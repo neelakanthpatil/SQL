@@ -6,3 +6,10 @@ WITH DT AS(SELECT TRUNC(SYSDATE,'MM')-1 + LEVEL AS DTE FROM DUAL CONNECT BY LEVE
     SELECT DTE,TO_CHAR(DTE,'IW'),TO_CHAR(DTE,'Day'),TO_CHAR(DTE,'Month'),TO_CHAR(DTE,'D') FROM DT;
 
 --DATE, START_OF_WEEK, DAY
+
+select trunc(sysdate,'MM') from dual;
+select last_day(sysdate) from dual;
+select trunc(sysdate,'Q') from dual;
+select TO_CHAR(trunc(sysdate,'Y') + INTERVAL '1' YEAR - 1,'Day') from dual;
+
+select TO_CHAR(sysdate,'YYYY') FROM DUAL;

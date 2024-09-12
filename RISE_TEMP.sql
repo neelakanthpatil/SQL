@@ -1,0 +1,18 @@
+SELECT * FROM (
+    SELECT RECORDDATE, 
+    TEMPERATURE, 
+    LEAD(TEMPERATURE,1,0) OVER(ORDER BY RECORDDATE) AS LEAD_TEMP
+    FROM WEATHER) WHERE LEAD_TEMP > TEMPERATURE;
+
+-------------------------------------------------------------------------------------
+create table weather(id number,
+recordDate  date ,
+temperature  number )
+
+
+INSERT INTO WEATHER VALUES( 1, TO_DATE('01-JAN-2015','DD-MON-YYYY'),10);
+INSERT INTO WEATHER VALUES( 2, TO_DATE('02-JAN-2015','DD-MON-YYYY'),25);
+INSERT INTO WEATHER VALUES( 3, TO_DATE('03-JAN-2015','DD-MON-YYYY'),20);
+INSERT INTO WEATHER VALUES( 4, TO_DATE('04-JAN-2015','DD-MON-YYYY'),30);
+
+

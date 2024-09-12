@@ -13,3 +13,8 @@ where NUM!=1 and not exists(select t2.num from t1 t2
     			where t2.num <> 1
      			and t1.num!=t2.num
     			and mod(t1.num,t2.num)=0);
+------------------------------------------------------------------------
+with num_seq  as (select level num from dual connect by level<=100)
+select listagg(num,'&')  within group(order by ns1.num) from num_seq ns1
+where ns1.num!=1 and 
+    not exists (select 1 from num_seq ns2 where ns2.num!=1 and ns1.num!=ns2.num and mod(ns1.num,ns2.num)=0);
